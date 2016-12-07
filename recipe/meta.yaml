@@ -18,6 +18,7 @@ requirements:
   build:
     - automake
     - libtool
+    - pkg-config
     - cairo 1.14.*
     - glib 2.51.*
     - freetype 2.6.*
@@ -30,7 +31,7 @@ requirements:
 
 test:
   commands:
-    # Libraries.
+    # Libraries/headers.
     {% set libs = [
         "libharfbuzz-icu",
         "libharfbuzz"
@@ -38,6 +39,7 @@ test:
     {% for lib in libs %}
     - test -f $PREFIX/lib/{{ lib }}.dylib  # [osx]
     - test -f $PREFIX/lib/{{ lib }}.so  # [linux]
+    - test -f $PREFIX/include/harfbuzz/hb-ft.h  # [not win]
     {% endfor %}
     # CLI tests.
     - hb-view --version  # [linux]
