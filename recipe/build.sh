@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Get rid of bad `defaults` .la files.
-rm -rf $PREFIX/lib/*.la
-
-
 if [ $(uname) == Darwin ]; then
   export CC=clang
   export CXX=clang++
@@ -15,9 +11,9 @@ elif [[ $(uname) == Linux ]]; then
   export OPTS="--with-gobject"
 fi
 
+# Otherwise we need to pin `automake` to 1.14 and I could not get that to work properly.
 autoreconf --force --install
 
-# FIXME: Locally it does have the executable bits :-/
 bash configure --prefix=$PREFIX \
                --disable-gtk-doc \
                --enable-static \

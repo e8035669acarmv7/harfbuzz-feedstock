@@ -17,9 +17,9 @@ build:
 requirements:
   build:
     - perl
-    - pkg-config
     - automake
     - libtool
+    - pkg-config
     - cairo 1.14.*
     - glib 2.51.*
     - freetype 2.6.*
@@ -43,14 +43,14 @@ test:
     {% endfor %}
     # CLI tests.
     - hb-view --version  # [linux]
-    #- conda inspect linkages -p $PREFIX harfbuzz  # [not win]
-    #- conda inspect objects -p $PREFIX harfbuzz  # [osx]
+    - conda inspect linkages -p $PREFIX harfbuzz  # [not win]
+    - conda inspect objects -p $PREFIX harfbuzz  # [osx]
 
 about:
   home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
   license: MIT
   license_file: COPYING
-  summary: An OpenType text shaping engine
+  summary: 'An OpenType text shaping engine.'
   description: |
     HarfBuzz is a text shaping library. New Harbuzz targets various font
     technologies while Old HarfBuzz targets only OpenType fonts.
