@@ -11,9 +11,11 @@ elif [[ $(uname) == Linux ]]; then
   export OPTS="--with-gobject"
 fi
 
-# Otherwise we need to pin `automake` to 1.14 and I could not get that to work properly.
+# We do not need this when building locally. Weird.
 autoreconf --force --install
 
+# FIXME: Locally it does have the executable bits,
+# but for some reason it does not work on CircleCi :-/
 bash configure --prefix=$PREFIX \
                --disable-gtk-doc \
                --enable-static \

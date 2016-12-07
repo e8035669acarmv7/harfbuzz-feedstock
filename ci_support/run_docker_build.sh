@@ -45,6 +45,12 @@ source run_conda_forge_build_setup
 conda install --yes --quiet conda-build=2
 conda info
 
+# Install the yum requirements defined canonically in the
+# "recipe/yum_requirements.txt" file. After updating that file,
+# run "conda smithy rerender" and this line be updated
+# automatically.
+yum install -y automake
+
 # Embarking on 1 case(s).
     set -x
     export CONDA_PERL=5.20.3.1

@@ -10,16 +10,14 @@ source:
   sha256: f616a7fbdc78a627043f9029000bf08c0c71df59cde4143fc92a014f6a993b26
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
-    - perl
     - automake
     - libtool
-    - pkg-config
     - cairo 1.14.*
     - glib 2.51.*
     - freetype 2.6.*
