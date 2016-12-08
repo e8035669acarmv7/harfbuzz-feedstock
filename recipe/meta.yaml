@@ -10,14 +10,12 @@ source:
   sha256: f616a7fbdc78a627043f9029000bf08c0c71df59cde4143fc92a014f6a993b26
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
-    - perl
-    - pkg-config
     - automake
     - libtool
     - cairo 1.14.*
@@ -43,14 +41,14 @@ test:
     {% endfor %}
     # CLI tests.
     - hb-view --version  # [linux]
-    #- conda inspect linkages -p $PREFIX harfbuzz  # [not win]
-    #- conda inspect objects -p $PREFIX harfbuzz  # [osx]
+    - conda inspect linkages -p $PREFIX harfbuzz  # [not win]
+    - conda inspect objects -p $PREFIX harfbuzz  # [osx]
 
 about:
   home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
   license: MIT
   license_file: COPYING
-  summary: An OpenType text shaping engine
+  summary: 'An OpenType text shaping engine.'
   description: |
     HarfBuzz is a text shaping library. New Harbuzz targets various font
     technologies while Old HarfBuzz targets only OpenType fonts.

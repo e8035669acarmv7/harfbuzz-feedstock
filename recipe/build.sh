@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Get rid of bad `defaults` .la files.
-rm -rf $PREFIX/lib/*.la
-
-
 if [ $(uname) == Darwin ]; then
   export CC=clang
   export CXX=clang++
@@ -15,9 +11,11 @@ elif [[ $(uname) == Linux ]]; then
   export OPTS="--with-gobject"
 fi
 
+# We do not need this when building locally. Weird.
 autoreconf --force --install
 
-# FIXME: Locally it does have the executable bits :-/
+# FIXME: Locally it does have the executable bits,
+# but for some reason it does not work on CircleCi :-/
 bash configure --prefix=$PREFIX \
                --disable-gtk-doc \
                --enable-static \
