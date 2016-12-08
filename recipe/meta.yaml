@@ -10,7 +10,7 @@ source:
   sha256: f616a7fbdc78a627043f9029000bf08c0c71df59cde4143fc92a014f6a993b26
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
@@ -21,12 +21,12 @@ requirements:
     - automake
     - libtool
     - cairo 1.14.*
-    - glib 2.*
+    - glib 2.51.*
     - freetype 2.6.*
     - icu 56.*
   run:
     - cairo 1.14.*
-    - glib 2.*
+    - glib 2.51.*
     - freetype 2.6.*
     - icu 56.*
 
