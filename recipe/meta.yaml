@@ -10,7 +10,7 @@ source:
   sha256: 718aa6fcadef1a6548315b8cfe42cc27e926256302c337f42df3a443843f6a2b
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
   detect_binary_files_with_prefix: true
 
@@ -22,12 +22,12 @@ requirements:
     - cairo 1.14.*
     - glib 2.51.*
     - freetype 2.7|2.7.*
-    - icu 56.*
+    - icu 58.*
   run:
     - cairo 1.14.*
     - glib 2.51.*
     - freetype 2.7|2.7.*
-    - icu 56.*
+    - icu 58.*
 
 test:
   commands:
