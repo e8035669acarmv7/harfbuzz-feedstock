@@ -7,7 +7,7 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: An OpenType text shaping engine
+Summary: An OpenType text shaping engine.
 
 HarfBuzz is a text shaping library. New Harbuzz targets various font
 technologies while Old HarfBuzz targets only OpenType fonts.
