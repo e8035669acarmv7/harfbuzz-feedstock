@@ -7,6 +7,7 @@ if [ $(uname) == Darwin ]; then
   export CXX=clang++
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
+  export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
 fi
 
 # CircleCI seems to have some weird issue with harfbuzz tarballs. The files
