@@ -16,14 +16,16 @@ technologies while Old HarfBuzz targets only OpenType fonts.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/harfbuzz-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/harfbuzz-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/harfbuzz-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/harfbuzz-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
+![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/harfbuzz/badges/version.svg)](https://anaconda.org/conda-forge/harfbuzz)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/harfbuzz/badges/downloads.svg)](https://anaconda.org/conda-forge/harfbuzz)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-harfbuzz-green.svg)](https://anaconda.org/conda-forge/harfbuzz) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/harfbuzz.svg)](https://anaconda.org/conda-forge/harfbuzz) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/harfbuzz.svg)](https://anaconda.org/conda-forge/harfbuzz) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/harfbuzz.svg)](https://anaconda.org/conda-forge/harfbuzz) |
 
 Installing harfbuzz
 ===================
