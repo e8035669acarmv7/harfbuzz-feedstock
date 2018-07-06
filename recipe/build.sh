@@ -17,7 +17,7 @@ fi
 # without its execute bit set. In a Docker container running locally, these
 # problems don't occur.
 
-autoreconf --force --install
+autoreconf --force --install -I $PREFIX/share/aclocal
 chmod +x configure
 
 ./configure --prefix=$PREFIX \

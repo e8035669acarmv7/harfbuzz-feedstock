@@ -16,8 +16,8 @@ technologies while Old HarfBuzz targets only OpenType fonts.
 Current build status
 ====================
 
-![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
-![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/harfbuzz-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/harfbuzz-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/harfbuzz-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/harfbuzz-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
