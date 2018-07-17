@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "1.8.2" %}
-{% set sha256 = "c8a3f88f416185a82f899a68b5714d6a40d7dc4d1d7379057348918d55aac657" %}
+{% set version = "1.8.4" %}
+{% set sha256 = "3c592f86fa0da69e2e0e98cae9f5d5b61def3bb7948aa00ca45748f27fa545fd" %}
 
 package:
   name: {{ name }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   detect_binary_files_with_prefix: true
 
