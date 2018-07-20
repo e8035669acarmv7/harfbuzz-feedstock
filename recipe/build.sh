@@ -10,6 +10,11 @@ if [ $(uname) == Darwin ]; then
   export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
 fi
 
+# Cf. https://github.com/conda-forge/staged-recipes/issues/673, we're in the
+# process of excising Libtool files from our packages. Existing ones can break
+# the build while this happens.
+find $PREFIX -name '*.la' -delete
+
 # CircleCI seems to have some weird issue with harfbuzz tarballs. The files
 # come out with modification times such that the build scripts want to rerun
 # automake, etc.; we need to run it ourselves since we don't have the precise
@@ -41,6 +46,10 @@ make
 # PASS: test-ot-tag
 # make check
 make install
+
+# Remove any new Libtool files we may have installed. It is intended that
+# conda-build will eventually do this automatically.
+find $PREFIX -name '*.la' -delete
 
 pushd $PREFIX
 rm -rf share/gtk-doc
