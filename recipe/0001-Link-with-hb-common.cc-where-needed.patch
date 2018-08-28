@@ -1,0 +1,42 @@
+From b7b9eb6a49afbcc65f590c991dda1fb474c41973 Mon Sep 17 00:00:00 2001
+From: Peter Williams <peter@newton.cx>
+Date: Wed, 5 Sep 2018 22:12:23 -0400
+Subject: [PATCH 1/2] Link with hb-common.cc where needed
+
+By HarfBuzz's standards, MSVC doesn't have visibility control, which affects
+linkage with some thread-local "pool" variables defined in hb-static.cc.
+Basically, we need to compile hb-common.cc along with all of the executables
+to get things to work.
+---
+ CMakeLists.txt       | 2 +-
+ src/Makefile.sources | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e881dbd..2b98007 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -825,7 +825,7 @@ foreach (prog main test test-would-substitute test-size-params test-buffer-seria
+     # test can not be used as a valid executable name on cmake, lets special case it
+     set (prog_name test-test)
+   endif ()
+-  add_executable(${prog_name} ${PROJECT_SOURCE_DIR}/src/${prog}.cc)
++  add_executable(${prog_name} ${PROJECT_SOURCE_DIR}/src/${prog}.cc ${PROJECT_SOURCE_DIR}/src/hb-common.cc)
+   target_link_libraries(${prog_name} harfbuzz ${THIRD_PARTY_LIBS})
+ endforeach ()
+ set_target_properties(hb-ot-tag PROPERTIES COMPILE_FLAGS "-DMAIN")
+diff --git a/src/Makefile.sources b/src/Makefile.sources
+index 654255e..2cc7da3 100644
+--- a/src/Makefile.sources
++++ b/src/Makefile.sources
+@@ -207,6 +207,7 @@ HB_ICU_headers = hb-icu.h
+ 
+ # Sources for libharfbuzz-subset
+ HB_SUBSET_sources = \
++	hb-common.cc \
+ 	hb-static.cc \
+ 	hb-subset.cc \
+ 	hb-subset.hh \
+-- 
+2.17.1
+
