@@ -36,7 +36,7 @@ requirements:
     - freetype
     - icu
     - graphite2
-    - gobject-introspection 1.55.*  # [not win]
+    - gobject-introspection         # [not win]
   run:
     - cairo                         # [not win]
     - glib
