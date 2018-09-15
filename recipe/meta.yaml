@@ -1,6 +1,8 @@
 {% set name = "harfbuzz" %}
 {% set version = "1.9.0" %}
 {% set sha256 = "11eca62bf0ac549b8d6be55f4e130946399939cdfe7a562fdaee711190248b00" %}
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: {{ name }}
@@ -9,29 +11,34 @@ package:
 source:
   url: https://www.freedesktop.org/software/{{ name }}/release/{{ name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
+  patches:
+    - 0001-Link-with-hb-common.cc-where-needed.patch                   # [win]
+    - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 0
-  skip: true  # [win]
-  detect_binary_files_with_prefix: true
+  number: 1
 
 requirements:
   build:
-    - automake
-    - libtool
-    - pkg-config
+    - cmake           # [win]
+    - ninja           # [win]
+    - {{posix}}patch  # [win]
+    - automake    # [not win]
+    - libtool     # [not win]
+    - {{native}}pkg-config
     - pthread-stubs
     - python >=2.7,<3
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}  # [not win]
+    - vs2015_win-64        # [win] -- don't bother building on VS2008
   host:
-    - cairo
+    - cairo                         # [not win]
     - glib
     - freetype
     - icu
     - graphite2
-    - gobject-introspection 1.55.*
+    - gobject-introspection         # [not win]
   run:
-    - cairo
+    - cairo                         # [not win]
     - glib
     - freetype
     - icu

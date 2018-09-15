@@ -1,13 +1,7 @@
-c_compiler:
-- toolchain_c
-cairo:
-- '1.14'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-docker_image:
-- condaforge/linux-anvil
 freetype:
 - 2.9.1
 glib:
@@ -15,8 +9,6 @@ glib:
 icu:
 - '58'
 pin_run_as_build:
-  cairo:
-    max_pin: x.x
   freetype:
     max_pin: x
   glib:
