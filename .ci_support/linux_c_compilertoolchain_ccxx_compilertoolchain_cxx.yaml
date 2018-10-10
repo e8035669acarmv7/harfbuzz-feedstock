@@ -1,15 +1,17 @@
 build_number_decrement:
-- '0'
+- '1000'
 c_compiler:
-- gcc
+- toolchain_c
 cairo:
 - '1.14'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
+cxx_compiler:
+- toolchain_cxx
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil
 freetype:
 - 2.9.1
 glib:
@@ -27,6 +29,7 @@ pin_run_as_build:
     max_pin: x
 zip_keys:
 - - c_compiler
+  - cxx_compiler
   - channel_sources
   - channel_targets
   - docker_image
