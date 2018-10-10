@@ -28,8 +28,9 @@ requirements:
     - {{native}}pkg-config
     - pthread-stubs
     - python >=2.7,<3
-    - {{ compiler('c') }}  # [not win]
-    - vs2015_win-64        # [win] -- don't bother building on VS2008
+    - {{ compiler('c') }}    # [not win]
+    - {{ compiler('cxx') }}  # [not win]
+    - vs2015_win-64          # [win] -- don't bother building on VS2008
   host:
     - cairo                         # [not win]
     - glib
