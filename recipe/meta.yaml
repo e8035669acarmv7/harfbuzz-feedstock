@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "1.9.0" %}
-{% set sha256 = "11eca62bf0ac549b8d6be55f4e130946399939cdfe7a562fdaee711190248b00" %}
+{% set version = "2.0.2" %}
+{% set sha256 = "f6de6c9dc89a56909227ac3e3dc9b18924a0837936ffd9633d13e981bcbd96e0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -16,7 +16,7 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 1001
+  number: 1000
 
 requirements:
   build:
