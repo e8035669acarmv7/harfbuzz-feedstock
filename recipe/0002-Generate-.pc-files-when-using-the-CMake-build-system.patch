@@ -1,4 +1,4 @@
-From 6dd9379b4b7956f5c5bff4aa54d60be91cdf96b9 Mon Sep 17 00:00:00 2001
+From e5502889e8f4403c90ffa37113d64b40cd006982 Mon Sep 17 00:00:00 2001
 From: Peter Williams <peter@newton.cx>
 Date: Thu, 6 Sep 2018 00:10:44 -0400
 Subject: [PATCH 2/2] Generate .pc files when using the CMake build system
@@ -6,15 +6,15 @@ Subject: [PATCH 2/2] Generate .pc files when using the CMake build system
 Conda-forge wants them. Some rather manual hacking needed; this patch will
 need updating.
 ---
- CMakeLists.txt         | 31 +++++++++++++++++++++++++++++++
+ CMakeLists.txt         | 30 ++++++++++++++++++++++++++++++
  src/harfbuzz-icu.pc.in |  2 +-
- 2 files changed, 32 insertions(+), 1 deletion(-)
+ 2 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2b98007..f7d3ad5 100644
+index 1e7282f..ae99556 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -273,6 +273,7 @@ if (HB_HAVE_FREETYPE)
+@@ -282,6 +282,7 @@ if (HB_HAVE_FREETYPE)
      message(FATAL_ERROR "HB_HAVE_FREETYPE was set, but we failed to find it. Maybe add a CMAKE_PREFIX_PATH= to your Freetype2 install prefix")
    endif ()
  
@@ -22,7 +22,7 @@ index 2b98007..f7d3ad5 100644
    list(APPEND THIRD_PARTY_LIBS ${FREETYPE_LIBRARIES})
    include_directories(AFTER ${FREETYPE_INCLUDE_DIRS})
    add_definitions(-DHAVE_FREETYPE=1)
-@@ -292,6 +293,7 @@ if (HB_HAVE_GRAPHITE2)
+@@ -301,6 +302,7 @@ if (HB_HAVE_GRAPHITE2)
  
    find_path(GRAPHITE2_INCLUDE_DIR graphite2/Font.h)
    find_library(GRAPHITE2_LIBRARY graphite2)
@@ -30,7 +30,7 @@ index 2b98007..f7d3ad5 100644
  
    include_directories(${GRAPHITE2_INCLUDE_DIR})
  
-@@ -317,6 +319,7 @@ if (HB_HAVE_GLIB)
+@@ -326,6 +328,7 @@ if (HB_HAVE_GLIB)
    # https://github.com/WebKit/webkit/blob/master/Source/cmake/FindGLIB.cmake
    find_package(PkgConfig)
    pkg_check_modules(PC_GLIB QUIET glib-2.0)
@@ -38,15 +38,15 @@ index 2b98007..f7d3ad5 100644
  
    find_library(GLIB_LIBRARIES NAMES glib-2.0 HINTS ${PC_GLIB_LIBDIR} ${PC_GLIB_LIBRARY_DIRS})
    find_path(GLIBCONFIG_INCLUDE_DIR NAMES glibconfig.h HINTS ${PC_LIBDIR} ${PC_LIBRARY_DIRS} ${PC_GLIB_INCLUDEDIR} ${PC_GLIB_INCLUDE_DIRS} PATH_SUFFIXES glib-2.0/include)
-@@ -362,6 +365,7 @@ if (APPLE AND HB_HAVE_CORETEXT)
-   find_library(APPLICATION_SERVICES_FRAMEWORK ApplicationServices)
-   if (APPLICATION_SERVICES_FRAMEWORK)
-     list(APPEND THIRD_PARTY_LIBS ${APPLICATION_SERVICES_FRAMEWORK})
-+    list(APPEND non_pc_libs ${APPLICATION_SERVICES_FRAMEWORK})
-   endif (APPLICATION_SERVICES_FRAMEWORK)
+@@ -390,6 +393,7 @@ if (APPLE AND HB_HAVE_CORETEXT)
+     find_library(APPLICATION_SERVICES_FRAMEWORK ApplicationServices)
+     if (APPLICATION_SERVICES_FRAMEWORK)
+       list(APPEND THIRD_PARTY_LIBS ${APPLICATION_SERVICES_FRAMEWORK})
++      list(APPEND non_pc_libs ${APPLICATION_SERVICES_FRAMEWORK})
+     endif ()
  
-   mark_as_advanced(APPLICATION_SERVICES_FRAMEWORK)
-@@ -374,6 +378,7 @@ if (WIN32 AND HB_HAVE_UNISCRIBE)
+     mark_as_advanced(APPLICATION_SERVICES_FRAMEWORK)
+@@ -403,6 +407,7 @@ if (WIN32 AND HB_HAVE_UNISCRIBE)
    list(APPEND project_headers ${PROJECT_SOURCE_DIR}/src/hb-uniscribe.h)
  
    list(APPEND THIRD_PARTY_LIBS usp10 gdi32 rpcrt4)
@@ -54,7 +54,7 @@ index 2b98007..f7d3ad5 100644
  endif ()
  
  if (WIN32 AND HB_HAVE_DIRECTWRITE)
-@@ -383,6 +388,7 @@ if (WIN32 AND HB_HAVE_DIRECTWRITE)
+@@ -412,6 +417,7 @@ if (WIN32 AND HB_HAVE_DIRECTWRITE)
    list(APPEND project_headers ${PROJECT_SOURCE_DIR}/src/hb-directwrite.h)
  
    list(APPEND THIRD_PARTY_LIBS dwrite rpcrt4)
@@ -62,11 +62,10 @@ index 2b98007..f7d3ad5 100644
  endif ()
  
  if (HB_HAVE_GOBJECT)
-@@ -830,6 +836,31 @@ foreach (prog main test test-would-substitute test-size-params test-buffer-seria
- endforeach ()
- set_target_properties(hb-ot-tag PROPERTIES COMPILE_FLAGS "-DMAIN")
+@@ -860,6 +866,30 @@ if (UNIX AND CMAKE_GENERATOR STREQUAL "Ninja")
+   endif ()
+ endif ()
  
-+
 +# conda-forge: pkg-config file - FIXME: hardcoded deps
 +if (NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL)
 +  string(REPLACE ";" " " private_pc_dep_str "${private_pc_deps}")
@@ -91,9 +90,9 @@ index 2b98007..f7d3ad5 100644
 +  endforeach ()
 +endif()
 +
- ## Tests
- if (UNIX OR MINGW)
-   if (BUILD_SHARED_LIBS)
+ 
+ if (NOT HB_DISABLE_TESTS)
+   ## src/ executables
 diff --git a/src/harfbuzz-icu.pc.in b/src/harfbuzz-icu.pc.in
 index 949869a..3332a65 100644
 --- a/src/harfbuzz-icu.pc.in
@@ -106,5 +105,5 @@ index 949869a..3332a65 100644
 +Libs: -L${libdir} -lharfbuzz
  Cflags: -I${includedir}/harfbuzz
 -- 
-2.17.1
+2.17.2
 

@@ -12,7 +12,6 @@ source:
   url: https://www.freedesktop.org/software/{{ name }}/release/{{ name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
   patches:
-    - 0001-Link-with-hb-common.cc-where-needed.patch                   # [win]
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
