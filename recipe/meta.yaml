@@ -15,7 +15,7 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 1000
+  number: 1001
 
 requirements:
   build:
