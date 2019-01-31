@@ -1,13 +1,11 @@
-build_number_decrement:
-- '0'
 c_compiler:
 - gcc
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge/label/gcc7,defaults
+- conda-forge,defaults
 channel_targets:
-- conda-forge gcc7
+- conda-forge main
 cxx_compiler:
 - gxx
 docker_image:
@@ -23,14 +21,5 @@ pin_run_as_build:
     max_pin: x.x
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   icu:
     max_pin: x
-zip_keys:
-- - c_compiler
-  - cxx_compiler
-  - channel_sources
-  - channel_targets
-  - docker_image
-  - build_number_decrement

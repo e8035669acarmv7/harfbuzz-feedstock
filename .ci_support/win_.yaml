@@ -11,7 +11,5 @@ icu:
 pin_run_as_build:
   freetype:
     max_pin: x
-  glib:
-    max_pin: x.x
   icu:
     max_pin: x
