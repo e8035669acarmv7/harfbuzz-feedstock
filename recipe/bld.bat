@@ -15,7 +15,7 @@ cd forgebuild
 FOR /F "delims=" %%i IN ('cygpath.exe -m "%LIBRARY_PREFIX%"') DO set "LIBRARY_PREFIX_M=%%i"
 set PKG_CONFIG_PATH=%LIBRARY_PREFIX_M%/lib/pkgconfig;%LIBRARY_PREFIX_M%/share/pkgconfig
 
-cmake -G Ninja ^
+cmake -G "%CMAKE_GENERATOR%" ^
       -DCMAKE_BUILD_TYPE=RelWithDebInfo ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DBUILD_SHARED_LIBS=ON ^
@@ -24,11 +24,8 @@ cmake -G Ninja ^
       -DHB_HAVE_GRAPHITE2=ON ^
       -DHB_HAVE_ICU=ON ^
       -DHB_HAVE_UNISCRIBE=ON ^
-      ..
+      %SRC_DIR%
 if errorlevel 1 exit 1
 
-ninja -v
-if errorlevel 1 exit 1
-
-ninja install
+cmake --build . --config Release --target install
 if errorlevel 1 exit 1
