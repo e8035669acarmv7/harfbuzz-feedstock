@@ -1,8 +1,16 @@
 {% set name = "harfbuzz" %}
-{% set version = "2.3.0" %}
-{% set sha256 = "3b314db655a41d19481e18312465fa25fca6f63382217f08062f126059f96764" %}
+{% set version = "2.3.1" %}
+{% set sha256 = "f205699d5b91374008d6f8e36c59e419ae2d9a7bb8c5d9f34041b9a5abcae468" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
+
+# Note: in conda-forge.yml we currently disable the beta-testing of Azure
+# Pipelines. This is because the Windows image we use on Azure provides Visual
+# Studio 2017, whereas on AppVeyor we need VS2015. Since AppVeyor is what
+# actually gets deployed, it wins for now. If/when we're ready to switch over
+# to Azure for production, the VS version requirement should bump up to 2017.
+# (Or maybe at that point there will be a mechanism to use VS2015 in Azure
+# Pipelines.)
 
 package:
   name: {{ name }}
@@ -15,7 +23,7 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 1001
+  number: 0
 
 requirements:
   build:
