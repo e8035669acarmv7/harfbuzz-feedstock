@@ -1,9 +1,19 @@
-CMAKE_GENERATOR:
-- NMake Makefiles
+c_compiler:
+- gcc
+c_compiler_version:
+- '8'
+cairo:
+- '1.16'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+cxx_compiler:
+- gxx
+cxx_compiler_version:
+- '8'
+docker_image:
+- condaforge/linux-anvil-ppc64le
 freetype:
 - 2.9.1
 glib:
@@ -11,6 +21,8 @@ glib:
 icu:
 - '58'
 pin_run_as_build:
+  cairo:
+    max_pin: x.x
   freetype:
     max_pin: x
   icu:
