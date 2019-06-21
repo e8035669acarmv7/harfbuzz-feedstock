@@ -23,7 +23,7 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -31,6 +31,7 @@ requirements:
     - ninja           # [win]
     - {{posix}}patch  # [win]
     - automake    # [not win]
+    - make        # [not win]
     - libtool     # [not win]
     - {{native}}pkg-config
     - pthread-stubs
