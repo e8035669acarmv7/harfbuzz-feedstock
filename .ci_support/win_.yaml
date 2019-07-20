@@ -9,7 +9,7 @@ freetype:
 glib:
 - '2.58'
 icu:
-- '58'
+- '64.2'
 pin_run_as_build:
   freetype:
     max_pin: x
