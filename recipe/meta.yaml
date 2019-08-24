@@ -23,7 +23,7 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
