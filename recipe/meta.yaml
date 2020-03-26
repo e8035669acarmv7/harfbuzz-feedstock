@@ -27,7 +27,6 @@ requirements:
     - libtool     # [not win]
     - {{native}}pkg-config
     - pthread-stubs
-    - python >=2.7,<3
     - {{ compiler('c') }}    # [not win]
     - {{ compiler('cxx') }}  # [not win]
   host:
