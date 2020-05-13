@@ -15,17 +15,17 @@ source:
     - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
     - cmake           # [win]
     - ninja           # [win]
-    - {{posix}}patch  # [win]
+    - {{ posix }}patch  # [win]
     - automake    # [not win]
     - make        # [not win]
     - libtool     # [not win]
-    - {{native}}pkg-config
+    - {{ native }}pkg-config
     - pthread-stubs
     - {{ compiler('c') }}    # [not win]
     - {{ compiler('cxx') }}  # [not win]
