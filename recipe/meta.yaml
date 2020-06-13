@@ -16,7 +16,10 @@ source:
 
 build:
   number: 4
-
+  run_exports:
+    # pretty excellent forward compatibility
+    # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
+    - {{ pin_subpackage(name, max_pin='x') }}
 requirements:
   build:
     - cmake           # [win]
