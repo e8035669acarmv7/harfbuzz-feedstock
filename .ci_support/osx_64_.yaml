@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 cairo:
 - '1.16'
 channel_sources:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
+- '10'
 freetype:
 - 2.9.1
 glib:
@@ -31,3 +31,5 @@ pin_run_as_build:
     max_pin: x
   icu:
     max_pin: x
+target_platform:
+- osx-64
