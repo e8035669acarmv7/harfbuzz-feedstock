@@ -22,7 +22,8 @@ meson setup builddir \
 	-Dcoretext=auto \
 	-Dintrospection=enabled \
 	-Dtests=disabled \
-	-Ddocs=disabled
+	-Ddocs=disabled \
+	-Dbenchmark=disabled
 ninja -v -C builddir -j ${CPU_COUNT}
 ninja -C builddir install -j ${CPU_COUNT}
 

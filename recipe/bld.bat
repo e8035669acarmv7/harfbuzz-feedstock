@@ -15,7 +15,7 @@ set "LIBRARY_PREFIX_M=%LIBRARY_PREFIX:\=/%"
 	-Dglib=enabled ^
 	-Dgobject=enabled ^
 	-Dcairo=enabled ^
-	-Dfontconfig=enabled ^
+	-Dfontconfig=auto ^
 	-Dicu=enabled ^
 	-Dgraphite=enabled ^
 	-Dfreetype=enabled ^
@@ -23,6 +23,7 @@ set "LIBRARY_PREFIX_M=%LIBRARY_PREFIX:\=/%"
 	-Dcoretext=auto ^
 	-Dintrospection=enabled ^
 	-Dtests=disabled ^
+	-Dbenchmark=disabled ^
 	-Ddocs=disabled
 if errorlevel 1 exit 1
 
