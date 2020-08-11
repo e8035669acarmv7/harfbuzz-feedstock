@@ -10,6 +10,9 @@ source:
   url: https://github.com/harfbuzz/harfbuzz/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
+    # https://github.com/harfbuzz/harfbuzz/pull/2637
+    - gir.diff
+    # https://github.com/harfbuzz/harfbuzz/pull/2605
     - darwin-versions.patch  # [osx]
 
 build:
