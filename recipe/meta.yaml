@@ -1,21 +1,19 @@
 {% set name = "harfbuzz" %}
-{% set version = "2.4.0" %}
-{% set sha256 = "b470eff9dd5b596edf078596b46a1f83c179449f051a469430afc15869db336f" %}
-{% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
+{% set version = "2.7.0" %}
+{% set sha256 = "4dba05de1fd44705f54c40d801e0e3d4833555d004cb611cc18675173feae75b" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://www.freedesktop.org/software/{{ name }}/release/{{ name }}-{{ version }}.tar.bz2
+  url: https://github.com/harfbuzz/harfbuzz/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - 0002-Generate-.pc-files-when-using-the-CMake-build-system.patch  # [win]
+    - darwin-versions.patch  # [osx]
 
 build:
-  number: 5
+  number: 0
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
@@ -23,25 +21,21 @@ build:
 
 requirements:
   build:
-    - cmake           # [win]
-    - ninja           # [win]
-    - {{ posix }}patch  # [win]
-    - automake    # [not win]
-    - make        # [not win]
-    - libtool     # [not win]
-    - {{ native }}pkg-config
+    - gobject-introspection
+    - meson
+    - ninja
+    - pkg-config
     - pthread-stubs
-    - {{ compiler('c') }}    # [not win]
-    - {{ compiler('cxx') }}  # [not win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
-    - cairo                         # [not win]
+    - cairo
     - glib
     - freetype
     - icu
     - graphite2
-    - gobject-introspection         # [not win]
   run:
-    - cairo                         # [not win]
+    - cairo
     - glib
     - freetype
     - icu

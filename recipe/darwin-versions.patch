@@ -1,0 +1,65 @@
+From 7c61caa7384e9c3afa0d9237bf6cd303eb5ef3a1 Mon Sep 17 00:00:00 2001
+From: Ebrahim Byagowi <ebrahim@gnu.org>
+Date: Thu, 30 Jul 2020 14:54:00 +0430
+Subject: [PATCH] [meson] Add darwin versions to library()
+
+We now have,
+
+$ otool -L src/libharfbuzz.dylib
+src/libharfbuzz.dylib:
+	@rpath/libharfbuzz.0.dylib (compatibility version 0.0.0, current version 0.0.0)
+
+And with the change should we get
+
+$ otool -L src/libharfbuzz.dylib
+src/libharfbuzz.dylib:
+	@rpath/libharfbuzz.0.dylib (compatibility version 20700.0.0, current version 20700.0.0)
+---
+ src/meson.build | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/meson.build b/src/meson.build
+index bac43a556..419596e84 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -405,6 +405,8 @@ if get_option('fuzzer_ldflags') != ''
+   hb_gobject_sources += 'failing-alloc.c'
+ endif
+ 
++darwin_versions = [hb_version_int, '@0@.0.0'.format(hb_version_int)]
++
+ libharfbuzz = library('harfbuzz', hb_sources,
+   include_directories: incconfig,
+   dependencies: harfbuzz_deps,
+@@ -412,6 +414,7 @@ libharfbuzz = library('harfbuzz', hb_sources,
+   soversion: hb_so_version,
+   version: version,
+   install: true,
++  darwin_versions: darwin_versions,
+   link_language: 'c',
+ )
+ 
+@@ -435,6 +438,7 @@ libharfbuzz_subset = library('harfbuzz-subset', hb_subset_sources,
+   soversion: hb_so_version,
+   version: version,
+   install: true,
++  darwin_versions: darwin_versions,
+   link_language: 'c',
+ )
+ 
+@@ -536,6 +540,7 @@ if have_icu and not have_icu_builtin
+     soversion: hb_so_version,
+     version: version,
+     install: true,
++    darwin_versions: darwin_versions,
+     # ICU links to stdc++ anyway so the default linker is good
+     # link_language: 'c',
+   )
+@@ -621,6 +626,7 @@ if have_gobject
+     soversion: hb_so_version,
+     version: version,
+     install: true,
++    darwin_versions: darwin_versions,
+     link_language: 'c',
+   )
+ 
