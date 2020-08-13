@@ -24,7 +24,7 @@ build:
 
 requirements:
   build:
-    - gobject-introspection
+    - gobject-introspection  # [not win]
     - meson
     - ninja
     - pkg-config
