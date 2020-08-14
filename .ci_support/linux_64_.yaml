@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '7'
 cairo:
 - '1.16'
 channel_sources:
@@ -11,9 +11,9 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '7'
 docker_image:
-- condaforge/linux-anvil-ppc64le
+- condaforge/linux-anvil-comp7
 freetype:
 - 2.9.1
 glib:
@@ -28,4 +28,4 @@ pin_run_as_build:
   icu:
     max_pin: x
 target_platform:
-- linux-ppc64le
+- linux-64
