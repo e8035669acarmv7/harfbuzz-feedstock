@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "2.7.0" %}
-{% set sha256 = "4dba05de1fd44705f54c40d801e0e3d4833555d004cb611cc18675173feae75b" %}
+{% set version = "2.7.1" %}
+{% set sha256 = "431c856ff18eeca89b2a36b58f2c2d56273cd522c34c0ffbc9dd6f7da4b9bd08" %}
 
 package:
   name: {{ name }}
@@ -9,11 +9,6 @@ package:
 source:
   url: https://github.com/harfbuzz/harfbuzz/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    # https://github.com/harfbuzz/harfbuzz/pull/2637
-    - gir.diff
-    # https://github.com/harfbuzz/harfbuzz/pull/2605
-    - darwin-versions.patch  # [osx]
 
 build:
   number: 0
