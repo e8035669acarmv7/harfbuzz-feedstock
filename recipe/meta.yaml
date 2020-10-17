@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
@@ -34,7 +34,6 @@ requirements:
     - graphite2
   run:
     - cairo
-    - glib
     - freetype
     - icu
     - graphite2

@@ -17,7 +17,7 @@ docker_image:
 freetype:
 - 2.9.1
 glib:
-- '2.58'
+- 2.64.6
 icu:
 - '67'
 pin_run_as_build:
@@ -25,7 +25,8 @@ pin_run_as_build:
     max_pin: x.x
   freetype:
     max_pin: x
-  icu:
-    max_pin: x
 target_platform:
 - linux-64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
