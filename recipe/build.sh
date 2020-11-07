@@ -11,7 +11,7 @@ meson setup builddir \
 	--buildtype=release \
 	--default-library=both \
 	--prefix=$PREFIX \
-	--libdir=lib \
+	-Dlibdir=lib \
 	-Dglib=enabled \
 	-Dgobject=enabled \
 	-Dcairo=enabled \
