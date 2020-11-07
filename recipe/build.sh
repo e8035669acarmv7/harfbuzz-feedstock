@@ -7,6 +7,7 @@ set -ex
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
 
 meson setup builddir \
+        ${MESON_ARGS} \
 	--buildtype=release \
 	--default-library=both \
 	--prefix=$PREFIX \
