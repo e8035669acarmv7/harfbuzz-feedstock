@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '9'
 cairo:
 - '1.16'
 cdt_name:
@@ -13,15 +13,15 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '9'
 docker_image:
-- condaforge/linux-anvil-ppc64le
+- quay.io/condaforge/linux-anvil-ppc64le
 freetype:
 - '2'
 glib:
-- 2.64.6
+- '2.66'
 icu:
-- '67'
+- '68'
 pin_run_as_build:
   cairo:
     max_pin: x.x
