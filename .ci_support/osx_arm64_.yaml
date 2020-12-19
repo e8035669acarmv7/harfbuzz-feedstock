@@ -7,7 +7,7 @@ c_compiler_version:
 cairo:
 - '1.16'
 channel_sources:
-- conda-forge/label/rust_dev,conda-forge,https://conda-web.anaconda.org/conda-forge
+- conda-forge/label/rust_dev,conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -19,7 +19,7 @@ freetype:
 glib:
 - '2.66'
 icu:
-- '67'
+- '68'
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:
