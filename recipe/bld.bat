@@ -7,7 +7,7 @@ set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig;%B
 :: get mixed path (forward slash) form of prefix so host prefix replacement works
 set "LIBRARY_PREFIX_M=%LIBRARY_PREFIX:\=/%"
 
-%BUILD_PREFIX%\python.exe %BUILD_PREFIX%\Scripts\meson setup builddir ^
+%BUILD_PREFIX%\Scripts\meson setup builddir ^
 	--wrap-mode=nofallback ^
 	--buildtype=release ^
 	--prefix=%LIBRARY_PREFIX_M% ^
