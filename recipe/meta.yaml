@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "2.7.2" %}
-{% set sha256 = "8ec112ee108642477478b75fc7906422abed404d7530e47ba0a4875f553f1b59" %}
+{% set version = "2.7.3" %}
+{% set sha256 = "be01bc2c3f1e8902f31b432131280cdfdf6780b72c2389dd63cfab908f6213f3" %}
 
 package:
   name: {{ name }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
