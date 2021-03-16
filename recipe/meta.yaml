@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "2.7.4" %}
-{% set sha256 = "daff8a4003ac420a8550760ed303ce33b310c8ea17b7f15b307d1969cabcebcb" %}
+{% set version = "2.8.0" %}
+{% set sha256 = "9444358d1d8c1884c3a25b02fe702bd244172c4fdd2e98f5a165bc0987ef34f6" %}
 
 package:
   name: {{ name }}
@@ -57,7 +57,7 @@ about:
   home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
   license: MIT
   license_file: COPYING
-  summary: 'An OpenType text shaping engine.'
+  summary: An OpenType text shaping engine.
   description: |
     HarfBuzz is a text shaping library. New Harbuzz targets various font
     technologies while Old HarfBuzz targets only OpenType fonts.
