@@ -21,7 +21,7 @@ set "LIBRARY_PREFIX_M=%LIBRARY_PREFIX:\=/%"
 	-Dfreetype=enabled ^
 	-Dgdi=auto ^
 	-Dcoretext=auto ^
-	-Dintrospection=disabled ^
+	-Dintrospection=enabled ^
 	-Dtests=disabled ^
 	-Dbenchmark=disabled ^
 	-Ddocs=disabled
