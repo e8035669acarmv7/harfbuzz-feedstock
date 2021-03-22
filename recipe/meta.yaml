@@ -9,9 +9,11 @@ package:
 source:
   url: https://github.com/harfbuzz/harfbuzz/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - gir-windows.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
@@ -19,7 +21,7 @@ build:
 
 requirements:
   build:
-    - gobject-introspection  # [not win]
+    - gobject-introspection
     - meson
     - ninja
     - pkg-config
@@ -39,17 +41,23 @@ requirements:
     - graphite2
 
 test:
+  requires:
+    - pygobject
   commands:
     # Libraries/headers.
     {% set libs = [
-        "libharfbuzz-icu",
-        "libharfbuzz"
+        "harfbuzz-gobject",
+        "harfbuzz-icu",
+        "harfbuzz"
         ] %}
     {% for lib in libs %}
-    - test -f $PREFIX/lib/{{ lib }}.dylib  # [osx]
-    - test -f $PREFIX/lib/{{ lib }}.so  # [linux]
+    - "test -f $PREFIX/lib/lib{{ lib }}${SHLIB_EXT}"  # [unix]
+    - "if not exist %PREFIX%\\Library\\bin\\{{ lib }}.dll exit 1"  # [win]
     {% endfor %}
-    - test -f $PREFIX/include/harfbuzz/hb-ft.h  # [not win]
+    - "test -f $PREFIX/include/harfbuzz/hb-ft.h"  # [not win]
+    - "if not exist %PREFIX%\\Library\\include\\harfbuzz\\hb-ft.h exit 1"   # [win]
+    - "test -f $PREFIX/lib/girepository-1.0/HarfBuzz-0.0.typelib"  # [unix]
+    - "if not exist %PREFIX%\\Library\\lib\\girepository-1.0\\HarfBuzz-0.0.typelib exit 1"   # [win]
     # CLI tests.
     - hb-view --version  # [linux]
 
