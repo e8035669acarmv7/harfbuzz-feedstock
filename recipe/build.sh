@@ -7,12 +7,6 @@ set -ex
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
 export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
 
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
-  MESON_ARGS="${MESON_ARGS} -Dintrospection=disabled"
-else
-  MESON_ARGS="${MESON_ARGS} -Dintrospection=enabled"
-fi
-
 meson setup builddir \
         ${MESON_ARGS} \
 	--buildtype=release \
@@ -24,6 +18,7 @@ meson setup builddir \
 	-Dcairo=enabled \
 	-Dfontconfig=enabled \
 	-Dicu=enabled \
+	-Dintrospection=enabled \
 	-Dgraphite=enabled \
 	-Dfreetype=enabled \
 	-Dgdi=auto \
