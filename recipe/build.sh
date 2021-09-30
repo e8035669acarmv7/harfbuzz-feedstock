@@ -40,7 +40,6 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
     unset CFLAGS
     unset CPPFLAGS
     export host_alias=$build_alias
-    export PKG_CONFIG_PATH=$BUILD_PREFIX/lib/pkgconfig
 
     meson setup native-build \
         "${meson_config_args[@]}" \
@@ -51,7 +50,7 @@ if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
 
     # This script would generate the functions.txt and dump.xml and save them
     # This is loaded in the native build. We assume that the functions exported
-    # by glib are the same for the native and cross builds
+    # by the package are the same for the native and cross builds
     export GI_CROSS_LAUNCHER=$BUILD_PREFIX/libexec/gi-cross-launcher-save.sh
     ninja -v -C native-build -j ${CPU_COUNT}
     ninja -C native-build install -j ${CPU_COUNT}
