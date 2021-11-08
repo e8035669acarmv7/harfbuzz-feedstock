@@ -19,7 +19,7 @@ freetype:
 glib:
 - '2'
 icu:
-- '68'
+- '69'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
