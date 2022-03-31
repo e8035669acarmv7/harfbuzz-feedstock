@@ -13,7 +13,7 @@ source:
     - gir-windows.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
