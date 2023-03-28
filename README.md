@@ -1,11 +1,11 @@
-About harfbuzz
-==============
+About harfbuzz-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/harfbuzz-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/harfbuzz-feedstock/blob/main/LICENSE.txt)
 
 Summary: An OpenType text shaping engine.
 
