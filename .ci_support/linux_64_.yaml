@@ -21,7 +21,7 @@ freetype:
 glib:
 - '2'
 icu:
-- '70'
+- '72'
 target_platform:
 - linux-64
 zip_keys:
