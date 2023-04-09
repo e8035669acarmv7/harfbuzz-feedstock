@@ -67,15 +67,15 @@ test:
     - hb-view --version  # [linux]
 
 about:
-  home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
+  home: https://harfbuzz.github.io/
   license: MIT
   license_file: COPYING
   summary: An OpenType text shaping engine.
   description: |
     HarfBuzz is a text shaping library. New Harbuzz targets various font
     technologies while Old HarfBuzz targets only OpenType fonts.
-  doc_url: https://www.freedesktop.org/wiki/Software/HarfBuzz/
-  dev_url: https://github.com/behdad/harfbuzz
+  doc_url: https://harfbuzz.github.io/
+  dev_url: https://github.com/harfbuzz/harfbuzz
 
 extra:
   recipe-maintainers:
