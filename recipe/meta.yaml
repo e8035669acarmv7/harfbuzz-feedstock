@@ -51,8 +51,10 @@ test:
   commands:
     # Libraries/headers.
     {% set libs = [
+        "harfbuzz-cairo",
         "harfbuzz-gobject",
         "harfbuzz-icu",
+        "harfbuzz-subset",
         "harfbuzz"
         ] %}
     {% for lib in libs %}
