@@ -3,15 +3,15 @@ About harfbuzz-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/harfbuzz-feedstock/blob/main/LICENSE.txt)
 
-Home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
+Home: https://harfbuzz.github.io/
 
 Package license: MIT
 
 Summary: An OpenType text shaping engine.
 
-Development: https://github.com/behdad/harfbuzz
+Development: https://github.com/harfbuzz/harfbuzz
 
-Documentation: https://www.freedesktop.org/wiki/Software/HarfBuzz/
+Documentation: https://harfbuzz.github.io/
 
 HarfBuzz is a text shaping library. New Harbuzz targets various font
 technologies while Old HarfBuzz targets only OpenType fonts.

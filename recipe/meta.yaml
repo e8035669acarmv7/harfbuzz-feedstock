@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "6.0.0" %}
-{% set sha256 = "6d753948587db3c7c3ba8cc4f8e6bf83f5c448d2591a9f7ec306467f3a4fe4fa" %}
+{% set version = "7.1.0" %}
+{% set sha256 = "6c7a358c6e134bd6da4fe39f59ec273ff0ee461697945027b7538287b8c73b1e" %}
 
 package:
   name: {{ name }}
@@ -51,8 +51,10 @@ test:
   commands:
     # Libraries/headers.
     {% set libs = [
+        "harfbuzz-cairo",
         "harfbuzz-gobject",
         "harfbuzz-icu",
+        "harfbuzz-subset",
         "harfbuzz"
         ] %}
     {% for lib in libs %}
@@ -67,15 +69,15 @@ test:
     - hb-view --version  # [linux]
 
 about:
-  home: http://www.freedesktop.org/wiki/Software/HarfBuzz/
+  home: https://harfbuzz.github.io/
   license: MIT
   license_file: COPYING
   summary: An OpenType text shaping engine.
   description: |
     HarfBuzz is a text shaping library. New Harbuzz targets various font
     technologies while Old HarfBuzz targets only OpenType fonts.
-  doc_url: https://www.freedesktop.org/wiki/Software/HarfBuzz/
-  dev_url: https://github.com/behdad/harfbuzz
+  doc_url: https://harfbuzz.github.io/
+  dev_url: https://github.com/harfbuzz/harfbuzz
 
 extra:
   recipe-maintainers:
