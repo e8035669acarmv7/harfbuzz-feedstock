@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "7.1.0" %}
-{% set sha256 = "6c7a358c6e134bd6da4fe39f59ec273ff0ee461697945027b7538287b8c73b1e" %}
+{% set version = "7.2.0" %}
+{% set sha256 = "a58446480a2216b0f01f897c635e18e75faf3d40a3b8ee953ce72cf77c9118ac" %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,7 @@ source:
     - gir-windows.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # pretty excellent forward compatibility
     # https://abi-laboratory.pro/index.php?view=timeline&l=harfbuzz
