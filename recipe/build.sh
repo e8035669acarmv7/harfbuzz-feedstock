@@ -22,6 +22,12 @@ meson_config_args=(
     -Dtests=disabled
 )
 
+if [ -n "$OSX_ARCH" ] ; then
+    # The -dead_strip_dylibs option breaks g-ir-scanner here
+    export LDFLAGS="$(echo $LDFLAGS |sed -e "s/-Wl,-dead_strip_dylibs//g")"
+    export LDFLAGS_LD="$(echo $LDFLAGS_LD |sed -e "s/-dead_strip_dylibs//g")"
+fi
+
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   unset _CONDA_PYTHON_SYSCONFIGDATA_NAME
   (
