@@ -19,7 +19,7 @@ freetype:
 glib:
 - '2'
 icu:
-- '72'
+- '73'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 target_platform:
