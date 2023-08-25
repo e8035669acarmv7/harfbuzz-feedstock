@@ -13,6 +13,6 @@ freetype:
 glib:
 - '2'
 icu:
-- '72'
+- '73'
 target_platform:
 - win-64
