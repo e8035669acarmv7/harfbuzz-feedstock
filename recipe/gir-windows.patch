@@ -7,15 +7,12 @@ Date:   Mon Mar 22 13:38:53 2021 +0000
     This reverts commit 188ff10aa15af54c4ef10e59bc4e13cea55f7ab4.
 
 diff --git a/src/meson.build b/src/meson.build
-index 93991ab..bf85217 100644
+index 4d63ecf..6095093 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -844,9 +844,8 @@ if have_gobject
- 
-   if build_gir
+@@ -870,7 +870,6 @@ if have_gobject
      conf.set('HAVE_INTROSPECTION', 1)
--    hb_gen_files_gir = gnome.generate_gir(libharfbuzz_gobject,
-+    hb_gen_files_gir = gnome.generate_gir(libharfbuzz, libharfbuzz_gobject,
+     hb_gen_files_gir = gnome.generate_gir([libharfbuzz_gobject, libharfbuzz],
        sources: [gir_headers, gir_sources, gobject_enums_h],
 -      dependencies: libharfbuzz_dep,
        namespace: 'HarfBuzz',
