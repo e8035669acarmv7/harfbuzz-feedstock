@@ -6,6 +6,8 @@ set -ex
 # meson needs this to determine where the g-ir-scanner script is located
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig
 export PKG_CONFIG=$BUILD_PREFIX/bin/pkg-config
+# Make sure .gir files in $PREFIX are found
+export XDG_DATA_DIRS=${XDG_DATA_DIRS}:$PREFIX/share:$BUILD_PREFIX/share
 
 meson_config_args=(
     -Dbenchmark=disabled
