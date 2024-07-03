@@ -1,6 +1,6 @@
 {% set name = "harfbuzz" %}
-{% set version = "8.2.0" %}
-{% set sha256 = "ca9d6c49b0eb100d343a984abeb3aa332443df48aa2ae0f2c78cf2e72c01ef78" %}
+{% set version = "9.0.0" %}
+{% set sha256 = "b7e481b109d19aefdba31e9f5888aa0cdfbe7608fed9a43494c060ce1f8a34d2" %}
 
 package:
   name: {{ name }}
@@ -27,6 +27,7 @@ requirements:
     - pkg-config
     - pthread-stubs
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cairo      # [build_platform != target_platform]
     - glib       # [build_platform != target_platform]
